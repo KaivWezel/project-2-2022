@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('./partials/head.ejs') %>
+	<body>
+		<header>
+			<h1>Portfolio</h1>
+		</header>
+		<main>
+			<% data.forEach(repo => { %>
+			<li><%= repo.name %></li>
+			<% }) %>
+		</main>
+	</body>
+</html>

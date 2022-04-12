@@ -1,0 +1,11 @@
+{
+	user(login: "kaivwezel") {
+		repositories(first: 10) {
+			edges {
+				node {
+					name
+				}
+			}
+		}
+	}
+}
