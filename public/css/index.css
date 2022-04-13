@@ -41,18 +41,46 @@ header {
 	margin-bottom: 3rem;
 	line-height: initial;
 	overflow: hidden;
+	perspective: 6000px;
 }
 
 header h2 {
 	font-size: 4rem;
-	transition: all 0.4s ease;
+	transition: all 0.3s ease;
 }
 
 header h1 {
 	font-size: 10rem;
+	height: 200px;
 	white-space: nowrap;
-	transition: all 0.2s ease;
-	transition-delay: 0.2s;
+	transform-style: preserve-3d;
+	transition: all 0.3s ease-out;
+	visibility: hidden;
+}
+
+header h1::before,
+header h1::after {
+	content: "Kai van Wezel";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 10rem;
+	white-space: nowrap;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	transform-origin: center;
+	visibility: visible;
+}
+
+header h1::before {
+	transform: rotateX(0deg) translateZ(100px);
+}
+
+header h1::after {
+	transform: rotateX(-90deg) translateZ(100px);
 }
 
 header:hover h2 {
@@ -60,7 +88,7 @@ header:hover h2 {
 }
 
 header:hover h1 {
-	margin-left: -20%;
+	transform: rotateX(90deg);
 }
 
 .repos {
