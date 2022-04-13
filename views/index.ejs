@@ -3,12 +3,21 @@
 	<%- include('./partials/head.ejs') %>
 	<body>
 		<header>
-			<h1>Portfolio</h1>
+			<h2>Portfolio</h2>
+			<h1>Kai van Wezel</h1>
 		</header>
 		<main>
-			<% data.forEach(repo => { %>
-			<li><%= repo.name %></li>
-			<% }) %>
+			<section class="repos">
+				<% data.forEach(repo => { %>
+				<div class="repo-card">
+					<a href="<%= repo.node.url%>">
+						<h3><%= repo.node.name %></h3>
+						<p class="repo-description"><%= repo.node.description %></p>
+					</a>
+				</div>
+				<% }) %>
+			</section>
+			<a href="/?page=<%= page %>" class="more-button">Load more</a>
 		</main>
 	</body>
 </html>

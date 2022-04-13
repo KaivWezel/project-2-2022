@@ -26,13 +26,23 @@ app.listen(3000, () => {
 app.get("/", (req, res) => {
 	graphqlAuth(`{
         user(login: "kaivwezel") {
-            repositories(first: 10) {
-                nodes {
-                    name
+            repositories(first: ${
+							req.query.page * 3 || 3
+						}, orderBy: {field: PUSHED_AT, direction: DESC}) {
+                edges {
+                    node {
+                        name
+                        url
+                        description
+                    }
                 }
             }
         }
     }`).then((data) => {
-		res.render("index", { data: data.user.repositories.edges });
+		const page = parseInt(req.query.page) + 1;
+		res.render("index", {
+			data: data.user.repositories.edges,
+			page: page ? page : 2,
+		});
 	});
 });
