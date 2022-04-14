@@ -104,6 +104,29 @@ header.intro:hover h1 {
 	transform: rotate(0);
 }
 
+.intro form input {
+	all: unset;
+	border-bottom: 2px solid var(--white);
+	text-align: left;
+}
+
+.intro form button {
+	border: 2px solid var(--white);
+	border-radius: 4px;
+	background: var(--blue-dark);
+	color: var(--white);
+	padding: 0.5rem 1rem;
+	display: table;
+	margin: 3rem auto;
+	transition: background 0.2s ease;
+}
+
+.intro form button:hover {
+	background: var(--white);
+	color: var(--blue-dark);
+	cursor: pointer;
+}
+
 .repos {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
