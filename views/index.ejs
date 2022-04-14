@@ -2,22 +2,20 @@
 <html lang="en">
 	<%- include('./partials/head.ejs') %>
 	<body>
-		<header>
-			<h2>Portfolio</h2>
-			<h1>Kai van Wezel</h1>
+		<header class="intro">
+			<h1>Creëer jouw persoonlijke portfolio pagina</h1>
 		</header>
-		<main>
-			<section class="repos">
-				<% data.forEach(repo => { %>
-				<div class="repo-card">
-					<a href="<%= repo.node.url%>">
-						<h3><%= repo.node.name %></h3>
-						<p class="repo-description"><%= repo.node.description %></p>
-					</a>
-				</div>
-				<% }) %>
-			</section>
-			<a href="/?page=<%= page %>" class="more-button">Load more</a>
+		<main class="intro">
+			<form action="/create-portfolio" method="POST">
+				<label for="username">Vul hier je github username in</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					placeholder="user123"
+				/>
+				<button>Genereer pagina</button>
+			</form>
 		</main>
 	</body>
 </html>

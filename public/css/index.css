@@ -46,7 +46,7 @@ header {
 
 header h2 {
 	font-size: 4rem;
-	transition: all 0.3s ease;
+	transition: margin 0.3s ease;
 }
 
 header h1 {
@@ -54,13 +54,13 @@ header h1 {
 	height: 200px;
 	white-space: nowrap;
 	transform-style: preserve-3d;
-	transition: all 0.3s ease-out;
+	transition: transform 0.3s ease-out;
 	visibility: hidden;
 }
 
 header h1::before,
 header h1::after {
-	content: "Kai van Wezel";
+	content: attr(data-name);
 	display: block;
 	position: absolute;
 	top: 0;
@@ -91,6 +91,19 @@ header:hover h1 {
 	transform: rotateX(90deg);
 }
 
+.intro {
+	text-align: center;
+}
+
+.intro h1 {
+	visibility: visible;
+	font-size: 3rem;
+}
+
+header.intro:hover h1 {
+	transform: rotate(0);
+}
+
 .repos {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -114,7 +127,11 @@ header:hover h1 {
 }
 
 .repo-card a {
+	height: 100%;
 	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .repo-card h3 {
@@ -125,6 +142,7 @@ header:hover h1 {
 .repo-description {
 	overflow: hidden;
 	max-height: 7rem;
+	margin-bottom: 0.5rem;
 }
 
 @supports (display: -webkit-box) {
@@ -137,9 +155,26 @@ header:hover h1 {
 	}
 }
 
+.repo-card ul {
+	list-style: none;
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+	overflow-x: auto;
+}
+
+.repo-card li {
+	border: 2px solid var(--blue-light);
+	padding: 0.5rem 1rem;
+}
+
+.repo-card span {
+	margin-right: 1rem;
+}
+
 .more-button {
 	display: table;
-	margin: auto;
+	margin: 1rem auto;
 	padding: 1rem 1.5rem;
 	text-decoration: none;
 	border-radius: 4px;
